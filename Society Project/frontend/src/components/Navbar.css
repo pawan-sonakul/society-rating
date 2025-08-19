@@ -1,0 +1,10 @@
+/* Custom styles untuk navbar ke-2 */
+.navbar-gradient {
+  background: linear-gradient(135deg, #005f73, #0051ff);
+}
+
+/* Logo styles */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
