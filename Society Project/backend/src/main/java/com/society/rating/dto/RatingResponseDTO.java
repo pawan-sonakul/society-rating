@@ -5,15 +5,32 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @Getter
 @Setter
 public class RatingResponseDTO {
-    private UUID id;
+    private String residentName;
+
+    private Integer managementRating;
+
+    private Integer amenitiesRating;
+
+    private Integer securityRating;
+
+    private Integer cleanlinessRating;
+
     private Double averageRating;
+
     private Integer month;
+
     private Integer year;
+
+    private Boolean anonymous;
+
+    private String message;
+
+    private LocalDateTime createdAt;
 }

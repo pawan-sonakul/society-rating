@@ -2,7 +2,6 @@ package com.society.rating.controller;
 
 import com.society.rating.dto.RatingRequestDTO;
 import com.society.rating.dto.RatingResponseDTO;
-import com.society.rating.entity.Rating;
 import com.society.rating.service.RatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/ratings")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173")
 public class RatingController {
 
     private final RatingService ratingService;
@@ -25,8 +24,8 @@ public class RatingController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Rating>> getRatingsByMonthAndYear() {
-        List<Rating> ratings = ratingService.getAllRatings();
-        return ResponseEntity.ok(ratings);
+    public ResponseEntity<List<RatingResponseDTO>> getRatingsByMonthAndYear() {
+        List<RatingResponseDTO> ratingResponseDTOS = ratingService.getAllRatings();
+        return ResponseEntity.ok(ratingResponseDTOS);
     }
 }

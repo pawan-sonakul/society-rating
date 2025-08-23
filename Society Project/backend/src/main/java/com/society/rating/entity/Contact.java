@@ -11,35 +11,23 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class Rating {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Contact {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long contactId;
 
-    private String residentName;
+    private String name;
 
-    private Integer managementRating;
+    private String email;
 
-    private Integer amenitiesRating;
-
-    private Integer securityRating;
-
-    private Integer cleanlinessRating;
-
-    private Double averageRating;
-
-    private Integer month;
-
-    private Integer year;
-
-    private Boolean anonymous;
+    private String subject;
 
     private String message;
 

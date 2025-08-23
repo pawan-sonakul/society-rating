@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface RatingRepository extends JpaRepository<Rating, UUID> {
-  Boolean existsByResidentNameAndMonthAndYear(String residentName, int month, int year);
-  List<Rating> findByMonthAndYear(int month, int year);
+    Boolean existsByResidentNameAndMonthAndYear(String residentName, int month, int year);
+
+    List<Rating> findByMonthAndYear(int month, int year);
 }

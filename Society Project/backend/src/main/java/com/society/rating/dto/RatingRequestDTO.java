@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Data
 @AllArgsConstructor
 @Getter
@@ -24,6 +22,8 @@ public class RatingRequestDTO {
     private Integer cleanlinessRating;
 
     private Boolean anonymous;
+
+    private String message;
 
     public Boolean isAnonymous() {
         return anonymous;
