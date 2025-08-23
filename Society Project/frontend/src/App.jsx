@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 import Footer from './components/Footer';
 import Contact from './pages/Contact';
+import ContactList from './pages/ContactList';
 import { ToastContainer } from 'react-toastify';
 
 
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/ratings" element={<RatingsList />} />
         <Route path="/submit" element={<SubmitRating />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin/contact" element={<ContactList />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

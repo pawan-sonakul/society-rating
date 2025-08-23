@@ -1,37 +1,123 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './Contact.css';
+import { toast } from 'react-toastify';
+import { addContactUs } from '../api/apiHandler';
 
 const Contact = () => {
+    const [data, setData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!data.name || !data.email || !data.subject || !data.message) {
+            toast.error('Please fill out all fields!');
+            return;
+        }
+
+        const requestData = {
+            name: (data.name),
+            email: (data.email),
+            subject: (data.subject),
+            message: (data.message)
+        };
+
+        try {
+            const response = await addContactUs(requestData);
+            toast.success("Message Sent Successfully!");
+            setData({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+
+        } catch (error) {
+            toast.error('Failed to send the message. Please try again later.');
+        }
+    };
+
+    const onChangeHandler = (e) => {
+        const { name, value } = e.target;
+        setData(prev => ({ ...prev, [name]: value }));
+    };
+
     return (
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6">
-                    <form class="contact-form">
-                        <h2 class="text-center mb-4">Contact Us</h2>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" required />
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-md-8 col-lg-6">
+                    <form className="contact-form" onSubmit={handleSubmit}>
+                        <h2 className="text-center mb-4">Contact Us</h2>
+
+                        <div className="mb-3">
+                            <label htmlFor="name" className="form-label">Name</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="name"
+                                name="name"
+                                value={data.name}
+                                onChange={onChangeHandler}
+                                required
+                            />
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" required />
+
+                        <div className="mb-3">
+                            <label htmlFor="email" className="form-label">Email address</label>
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="email"
+                                name="email"
+                                value={data.email}
+                                onChange={onChangeHandler}
+                                required
+                            />
                         </div>
-                        <div class="mb-3">
-                            <label for="subject" class="form-label">Subject</label>
-                            <input type="text" class="form-control" id="subject" required />
+
+                        <div className="mb-3">
+                            <label htmlFor="subject" className="form-label">Subject</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="subject"
+                                name="subject"
+                                value={data.subject}
+                                onChange={onChangeHandler}
+                                required
+                            />
                         </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" rows="5" required></textarea>
+
+                        <div className="mb-3">
+                            <label htmlFor="message" className="form-label">Message</label>
+                            <textarea
+                                className="form-control"
+                                id="message"
+                                name="message"
+                                rows="5"
+                                value={data.message}
+                                onChange={onChangeHandler}
+                                required
+                            ></textarea>
                         </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+
+                        <div className="d-grid">
+                            <button
+                                type="submit"
+                                className="btn btn-primary btn-lg"
+                            >
+                                Submit
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Contact
+export default Contact;

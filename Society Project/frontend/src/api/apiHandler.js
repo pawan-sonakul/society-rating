@@ -9,3 +9,11 @@ export const addRating = async (ratingData) => {
 export const fetchAllRatings = async () => {
   return await axios.get("http://localhost:8080/api/ratings");
 };
+
+export const addContactUs = async (contactData) => {
+  await axios.post("http://localhost:8080/api/admin/contact", contactData);
+};
+
+export const fetchAllContacts = async () => {
+  return await axios.get("http://localhost:8080/api/admin/contact");
+};

@@ -22,6 +22,7 @@ const SubmitRating = () => {
       amenitiesRating: Number(data.amenities),
       securityRating: Number(data.security),
       cleanlinessRating: Number(data.cleanliness),
+      message: (data.message),
       anonymous: anonymous
     };
 
@@ -34,7 +35,8 @@ const SubmitRating = () => {
         management: '',
         cleanliness: '',
         security: '',
-        amenities: ''
+        amenities: '',
+        message: ''
       });
       setAnonymous(false);
 
@@ -146,6 +148,16 @@ const SubmitRating = () => {
                 max="5"
               />
             </div>
+
+            <div class="mb-3">
+              <label for="message" class="form-label">Comment</label>
+              <textarea class="form-control" id="message" rows="5" className="form-control"
+                name="message"
+                placeholder="Add comment"
+                value={data.message}
+                onChange={onChangeHandler} required></textarea>
+            </div>
+
             <div className="d-grid">
               <button type="submit" className="btn btn-primary btn-lg">
                 Submit Rating

@@ -40,8 +40,9 @@ const RatingsList = () => {
               <th>Average</th>
               <th>Month</th>
               <th>Year</th>
-              <th>Anonymous</th>
+              {/* <th>Anonymous</th> */}
               <th>Submitted At</th>
+              <th>Comments</th>
             </tr>
           </thead>
           <tbody>
@@ -60,8 +61,9 @@ const RatingsList = () => {
                 <td>{rating.averageRating?.toFixed(2)}</td>
                 <td>{rating.month}</td>
                 <td>{rating.year}</td>
-                <td>{rating.anonymous ? "Yes" : "No"}</td>
+                {/* <td>{rating.anonymous ? "Yes" : "No"}</td> */}
                 <td>{formatDate(rating.createdAt)}</td>
+                <td>{rating.message}</td>
               </tr>
             ))}
             {ratings.length === 0 && (
