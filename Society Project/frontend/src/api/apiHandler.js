@@ -1,19 +1,19 @@
 import axios from "axios";
 
-const API_URL = "https://localhost:8080/api/ratings";
+const API_URL = "https://society-rating.up.railway.app/api";
 
 export const addRating = async (ratingData) => {
-  await axios.post("http://localhost:8080/api/ratings", ratingData);
+  await axios.post(`${API_URL}/ratings`, ratingData);
 };
 
 export const fetchAllRatings = async () => {
-  return await axios.get("http://localhost:8080/api/ratings");
+  return await axios.get(`${API_URL}/ratings`);
 };
 
 export const addContactUs = async (contactData) => {
-  await axios.post("http://localhost:8080/api/admin/contact", contactData);
+  await axios.post(`${API_URL}/admin/contact`, contactData);
 };
 
 export const fetchAllContacts = async () => {
-  return await axios.get("http://localhost:8080/api/admin/contact");
+  return await axios.get(`${API_URL}/admin/contact`);
 };
