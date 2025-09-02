@@ -20,9 +20,9 @@ const RatingsList = () => {
   }, []);
 
   const formatDate = (isoString) => {
-    const date = new Date(isoString);
-    return date.toLocaleString(); // you can customize format if needed
-  };
+  const date = new Date(isoString);
+  return date.toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+};
 
   return (
     <div className="container mt-4">
