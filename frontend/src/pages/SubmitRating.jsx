@@ -40,6 +40,8 @@ const SubmitRating = () => {
       });
       setAnonymous(false);
 
+      navigate("/submit");
+
     } catch (error) {
       toast.error(`Failed to submit rating`);
     }
