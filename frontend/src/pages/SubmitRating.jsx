@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { addRating } from '../api/apiHandler';
 
 const SubmitRating = () => {
   const [anonymous, setAnonymous] = useState(false);
-
   const [data, setData] = useState({
     name: '',
     management: '',
     cleanliness: '',
     security: '',
-    amenities: ''
+    amenities: '',
+    message: ''
   });
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,14 +24,13 @@ const SubmitRating = () => {
       amenitiesRating: Number(data.amenities),
       securityRating: Number(data.security),
       cleanlinessRating: Number(data.cleanliness),
-      message: (data.message),
-      anonymous: anonymous
+      message: data.message,
+      anonymous
     };
 
     try {
       await addRating(requestData);
       toast.success("Rating Submitted Successfully!");
-
       setData({
         name: '',
         management: '',
@@ -39,11 +40,9 @@ const SubmitRating = () => {
         message: ''
       });
       setAnonymous(false);
-
       navigate("/submit");
-
     } catch (error) {
-      toast.error(`Failed to submit rating`);
+      toast.error("Failed to submit rating");
     }
   };
 
@@ -94,7 +93,6 @@ const SubmitRating = () => {
                 className="form-control"
                 id="management"
                 name="management"
-                placeholder="0"
                 value={data.management}
                 onChange={onChangeHandler}
                 required
@@ -110,7 +108,6 @@ const SubmitRating = () => {
                 className="form-control"
                 id="amenities"
                 name="amenities"
-                placeholder="0"
                 value={data.amenities}
                 onChange={onChangeHandler}
                 required
@@ -126,7 +123,6 @@ const SubmitRating = () => {
                 className="form-control"
                 id="security"
                 name="security"
-                placeholder="0"
                 value={data.security}
                 onChange={onChangeHandler}
                 required
@@ -142,7 +138,6 @@ const SubmitRating = () => {
                 className="form-control"
                 id="cleanliness"
                 name="cleanliness"
-                placeholder="0"
                 value={data.cleanliness}
                 onChange={onChangeHandler}
                 required
@@ -151,13 +146,17 @@ const SubmitRating = () => {
               />
             </div>
 
-            <div class="mb-3">
-              <label for="message" class="form-label">Comment</label>
-              <textarea class="form-control" id="message" rows="5" className="form-control"
+            <div className="mb-3">
+              <label htmlFor="message" className="form-label">Comment</label>
+              <textarea
+                className="form-control"
+                id="message"
+                rows="5"
                 name="message"
-                placeholder="Add comment"
                 value={data.message}
-                onChange={onChangeHandler} required></textarea>
+                onChange={onChangeHandler}
+                required
+              ></textarea>
             </div>
 
             <div className="d-grid">
