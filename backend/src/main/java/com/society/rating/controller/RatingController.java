@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/ratings")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class RatingController {
 
     private final RatingService ratingService;
@@ -29,3 +29,4 @@ public class RatingController {
         return ResponseEntity.ok(ratingResponseDTOS);
     }
 }
+
