@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/admin/contact")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class ContactController {
     private final ContactServiceImpl contactService;
 
@@ -28,3 +28,4 @@ public class ContactController {
         return ResponseEntity.ok(ratingResponseDTOS);
     }
 }
+
