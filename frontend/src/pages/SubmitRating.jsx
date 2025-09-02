@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { addRating } from '../api/apiHandler';
+import { useNavigate } from 'react-router-dom';
 
 const SubmitRating = () => {
   const navigate = useNavigate();
