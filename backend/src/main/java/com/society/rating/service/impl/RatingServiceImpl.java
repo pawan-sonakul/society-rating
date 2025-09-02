@@ -8,7 +8,8 @@ import com.society.rating.service.RatingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 
 @Service
@@ -33,10 +34,23 @@ public class RatingServiceImpl implements RatingService {
         rating.setAverageRating(average);
         rating.setAnonymous(ratingRequestDTO.isAnonymous());
         rating.setMessage(ratingRequestDTO.getMessage());
-        rating.setCreatedAt(LocalDateTime.now());
+        
+        rating.setCreatedAt(OffsetDateTime.now(ZoneOffset.UTC).toLocalDateTime());
 
         ratingRepository.save(rating);
 
+        return mapToResponseDTO(rating);
+    }
+
+    @Override
+    public List<RatingResponseDTO> getAllRatings() {
+        return ratingRepository.findAll()
+                .stream()
+                .map(this::mapToResponseDTO)
+                .toList();
+    }
+
+    private RatingResponseDTO mapToResponseDTO(Rating rating) {
         return new RatingResponseDTO(
                 rating.getResidentName(),
                 rating.getManagementRating(),
@@ -49,23 +63,4 @@ public class RatingServiceImpl implements RatingService {
                 rating.getCreatedAt()
         );
     }
-
-    @Override
-    public List<RatingResponseDTO> getAllRatings() {
-        return ratingRepository.findAll()
-                .stream()
-                .map(rating -> new RatingResponseDTO(
-                        rating.getResidentName(),
-                        rating.getManagementRating(),
-                        rating.getAmenitiesRating(),
-                        rating.getSecurityRating(),
-                        rating.getCleanlinessRating(),
-                        rating.getAverageRating(),
-                        rating.getAnonymous(),
-                        rating.getMessage(),
-                        rating.getCreatedAt()
-                ))
-                .toList();
-    }
-
 }
