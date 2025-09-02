@@ -38,9 +38,6 @@ const RatingsList = () => {
               <th>Security</th>
               <th>Cleanliness</th>
               <th>Average</th>
-              <th>Month</th>
-              <th>Year</th>
-              {/* <th>Anonymous</th> */}
               <th>Submitted At</th>
               <th>Comments</th>
             </tr>
@@ -59,9 +56,6 @@ const RatingsList = () => {
                 <td>{rating.securityRating}</td>
                 <td>{rating.cleanlinessRating}</td>
                 <td>{rating.averageRating?.toFixed(2)}</td>
-                <td>{rating.month}</td>
-                <td>{rating.year}</td>
-                {/* <td>{rating.anonymous ? "Yes" : "No"}</td> */}
                 <td>{formatDate(rating.createdAt)}</td>
                 <td>{rating.message}</td>
               </tr>
