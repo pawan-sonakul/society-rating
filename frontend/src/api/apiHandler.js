@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Base API URL for Railway backend
-const API_URL = "https://society-rating-api.up.railway.app//api";
+const API_URL = "https://society-rating-api.up.railway.app/api";
 
 export const addRating = async (ratingData) => {
   await axios.post(`${API_URL}/ratings`, ratingData);
