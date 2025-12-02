@@ -15,7 +15,7 @@ Built using Spring Boot, React.js, and MongoDB.
 ## Demo
 Upload your MP4 in a GitHub Issue and paste the asset link below:
 
-https://github.com/pawan-sonakul/society-rating/assets/your-video-id
+https://github.com/pawan-sonakul/society-rating/assets/demo
 
 ## Tech Stack
 **Backend:** Spring Boot (Java)  
